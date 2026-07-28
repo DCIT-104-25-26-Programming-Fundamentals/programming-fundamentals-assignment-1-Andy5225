@@ -49,3 +49,68 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# PART A: Function to print first N Fibonacci terms
+def generate_fibonacci(n):
+    # Check if N is positive
+    if n <= 0:
+        print("Error: Number of terms must be a positive integer.")
+        return
+
+    fibonacci = []
+
+    first = 0
+    second = 1
+
+    for i in range(n):
+        fibonacci.append(first)
+
+        # Calculate next Fibonacci number
+        next_number = first + second
+        first = second
+        second = next_number
+
+    print("Fibonacci sequence:", *fibonacci)
+
+
+# PART B: Function to check if a number is a Fibonacci number
+def is_fibonacci(number):
+
+    first = 0
+    second = 1
+
+    # Check first two Fibonacci numbers
+    if number == first or number == second:
+        return True
+
+    # Generate Fibonacci sequence using a loop
+    while second <= number:
+        next_number = first + second
+        first = second
+        second = next_number
+
+        if second == number:
+            return True
+
+    return False
+
+
+# Main function
+def main():
+
+    # Part A
+    terms = int(input("How many terms? "))
+    generate_fibonacci(terms)
+
+
+    # Part B
+    number = int(input("\nEnter a number to check: "))
+
+    if is_fibonacci(number):
+        print(f"{number} is a Fibonacci number.")
+    else:
+        print(f"{number} is NOT a Fibonacci number.")
+
+
+# Run program
+if __name__ == "__main__":
+    main()
